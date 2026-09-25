@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dkthynf6av2jm"]
+
+[ext_resource type="Texture2D" uid="uid://c62y15abbh2nl" path="res://assets/player/pistol.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dlfo40uqk1qs7" path="res://player/player.gd" id="1_rkbax"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
+radius = 12.0
+
+[node name="Player" type="CharacterBody2D" unique_id=75708011]
+z_index = 10
+motion_mode = 1
+script = ExtResource("1_rkbax")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=353647744]
+texture = ExtResource("1_4flbx")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=495078291]
+position_smoothing_enabled = true
+position_smoothing_speed = 9.0
+rotation_smoothing_enabled = true
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=460617011]
+position = Vector2(20, -9.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1283052970]
+position = Vector2(-10, 0)
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_4flbx")
