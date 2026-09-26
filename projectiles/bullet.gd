@@ -10,6 +10,8 @@ extends CharacterBody2D
 @export var bounce_energy: float = 0.75
 @export var ricochet_cutoff: float = 0.75
 
+const PICKUP: PackedScene = preload("res://pickups/pickup.tscn")
+
 var direction: Vector2 = Vector2.RIGHT
 
 var _bounces: int = 0
@@ -35,4 +37,17 @@ func _physics_process(delta: float) -> void:
 			rotation = _velocity.angle()
 			_bounces += 1
 		else:
-			queue_free()
+			_die()
+
+func _die() -> void:
+	var p := PICKUP.instantiate()
+	p.global_position = global_position
+	
+	get_tree().current_scene.add_child(p)
+	
+	var eject_dir = -_velocity.normalized()
+	eject_dir.y -= 0.5
+	
+	p.linear_velocity = eject_dir.normalized() * randf_range(150, 250)
+	
+	queue_free()

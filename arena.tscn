@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://lhlgh7ufsb3w"]
 
 [ext_resource type="PackedScene" uid="uid://dkthynf6av2jm" path="res://player/player.tscn" id="1_ubfh8"]
+[ext_resource type="PackedScene" uid="uid://dvk0xdquhpek3" path="res://hud/hud.tscn" id="2_444vf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rti0"]
 size = Vector2(1152, 40)
@@ -32,3 +33,5 @@ shape = SubResource("RectangleShape2D_g21bf")
 [node name="Player" parent="." unique_id=75708011 instance=ExtResource("1_ubfh8")]
 position = Vector2(576, 324)
 collision_layer = 2
+
+[node name="HUD" parent="." unique_id=1846595023 instance=ExtResource("2_444vf")]

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://lpo0anx4ihim"]
+
+[ext_resource type="Script" uid="uid://bhp0seuxwh425" path="res://pickups/pickup.gd" id="1_0ketk"]
+[ext_resource type="Texture2D" uid="uid://wbdvqo8ea7y3" path="res://assets/pickups/bullet.png" id="1_ra232"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rti0"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ax6fg"]
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tjwri"]
+radius = 13.038404
+
+[node name="Pickup" type="RigidBody2D" unique_id=1580385206]
+collision_layer = 16
+script = ExtResource("1_0ketk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1693811259]
+texture = ExtResource("1_ra232")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1780708001]
+shape = SubResource("CircleShape2D_8rti0")
+
+[node name="PickupArea" type="Area2D" parent="." unique_id=1585259232]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=102702753]
+shape = SubResource("CircleShape2D_ax6fg")
+
+[node name="CollectArea" type="Area2D" parent="." unique_id=1322394684]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea" unique_id=1283342403]
+shape = SubResource("CircleShape2D_tjwri")
