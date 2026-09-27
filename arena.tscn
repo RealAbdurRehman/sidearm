@@ -66,5 +66,5 @@ position = Vector2(576, 324)
 [node name="HUD" parent="." unique_id=1846595023 instance=ExtResource("2_444vf")]
 
 [node name="Spawner" parent="." unique_id=1238383317 instance=ExtResource("3_27ga2")]
-position = Vector2(1024, 324)
+position = Vector2(1024, 448)
 worker_scene = ExtResource("4_h0wof")
