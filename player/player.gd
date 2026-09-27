@@ -127,32 +127,20 @@ func _fire() -> void:
 func _spawn_mercy_drop() -> void:
 	var p := PICKUP.instantiate()
 	p.texture_override = MERCY_TEXTURE
+	p.global_position = global_position + Vector2(0, -40)
+
+	p.linear_velocity = Vector2(
+		randf_range(-180, 180),
+		randf_range(-560, -420)
+	)
 	
-	var aim_dir := Vector2.RIGHT.rotated(rotation)
-	var spawn_dir := -aim_dir
-	var desired_dist := 90.0
-	
-	var space := get_world_2d().direct_space_state
-	var query := PhysicsRayQueryParameters2D.create(global_position, global_position + spawn_dir * desired_dist)
-	
-	query.exclude = [self]  
 	query.collision_mask = 1  
-	
-	var hit := space.intersect_ray(query)
-	
-	var actual_dist := desired_dist
-	if hit:
-		actual_dist = global_position.distance_to(hit.position) - 15.0
-		actual_dist = max(actual_dist, 25.0)
-	
-	p.global_position = global_position + spawn_dir * actual_dist
+	p.magnet_delay_override = 1.2
 	
 	var roll := randf()
 	if roll < 0.2: p.ammo = 1
 	elif roll < 0.7: p.ammo = 2
 	else: p.ammo = 3
-	
-	p.linear_velocity = (spawn_dir * randf_range(120, 200)) + Vector2(0, -80)
 	
 	get_tree().current_scene.add_child(p)
 
@@ -160,5 +148,5 @@ func add_ammo(amount: int) -> void:
 	ammo = mini(ammo + amount, max_ammo)
 	ammo_changed.emit(ammo, max_ammo)
 	
-	if ammo >= max_ammo / 2:
+	if ammo >= max_ammo / 2.0:
 		_mercy_dropped = false

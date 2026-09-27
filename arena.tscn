@@ -18,20 +18,47 @@ collision_mask = 0
 position = Vector2(576, 628)
 shape = SubResource("RectangleShape2D_8rti0")
 
+[node name="ColorRect" type="ColorRect" parent="Walls/CollisionShape2D" unique_id=313651061]
+offset_left = -576.0
+offset_top = -20.0
+offset_right = 576.0
+offset_bottom = 20.0
+color = Color(0.39298746, 0.40435204, 0.27016464, 1)
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" unique_id=1186313396]
 position = Vector2(576, 20)
 shape = SubResource("RectangleShape2D_8rti0")
+
+[node name="ColorRect" type="ColorRect" parent="Walls/CollisionShape2D2" unique_id=854279627]
+offset_left = -576.0
+offset_top = -20.0
+offset_right = 576.0
+offset_bottom = 20.0
+color = Color(0.4, 0.4, 0.4, 1)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls" unique_id=1552847977]
 position = Vector2(20, 324)
 shape = SubResource("RectangleShape2D_g21bf")
 
+[node name="ColorRect" type="ColorRect" parent="Walls/CollisionShape2D3" unique_id=1109057250]
+offset_left = -20.0
+offset_top = -284.0
+offset_right = 20.0
+offset_bottom = 284.0
+color = Color(0.4, 0.4, 0.4, 1)
+
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls" unique_id=1883952375]
 position = Vector2(1132, 324)
 shape = SubResource("RectangleShape2D_g21bf")
 
+[node name="ColorRect" type="ColorRect" parent="Walls/CollisionShape2D4" unique_id=597037320]
+offset_left = -20.0
+offset_top = -284.0
+offset_right = 20.0
+offset_bottom = 284.0
+color = Color(0.40069774, 0.40069774, 0.40069768, 1)
+
 [node name="Player" parent="." unique_id=75708011 instance=ExtResource("1_ubfh8")]
 position = Vector2(576, 324)
-collision_layer = 2
 
 [node name="HUD" parent="." unique_id=1846595023 instance=ExtResource("2_444vf")]

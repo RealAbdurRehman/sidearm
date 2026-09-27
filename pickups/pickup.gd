@@ -16,6 +16,8 @@ extends RigidBody2D
 @onready var pickup_area: Area2D = $PickupArea
 @onready var collect_area: Area2D = $CollectArea
 
+var magnet_delay_override: float = -1.0
+
 var _player: Node2D = null
 var _is_magnetized: bool = false
 var _can_magnetize: bool = false
@@ -31,7 +33,8 @@ func _ready() -> void:
 	pickup_area.body_entered.connect(_on_pickup_area_body_entered)
 	collect_area.body_entered.connect(_on_collect_area_body_entered)
 	
-	await get_tree().create_timer(magnet_delay).timeout
+	var delay := magnet_delay_override if magnet_delay_override > 0.0 else magnet_delay
+	await get_tree().create_timer(delay).timeout
 	
 	if not is_inside_tree(): return 
 	
@@ -96,5 +99,5 @@ func _force_magnetize(player: Node2D) -> void:
 	_is_magnetized = true
 	
 	sleeping = false
-	collision_layer = 0
-	collision_mask = 0
+	collision_layer = 8
+	collision_mask = 8
