@@ -128,13 +128,12 @@ func _spawn_mercy_drop() -> void:
 	var p := PICKUP.instantiate()
 	p.texture_override = MERCY_TEXTURE
 	p.global_position = global_position + Vector2(0, -40)
-
+	
 	p.linear_velocity = Vector2(
 		randf_range(-180, 180),
 		randf_range(-560, -420)
 	)
 	
-	query.collision_mask = 1  
 	p.magnet_delay_override = 1.2
 	
 	var roll := randf()
