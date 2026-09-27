@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal ammo_changed(new_ammo: int, max_ammo: int)
+signal captured
 
 @export_group("Gun Settings")
 @export var recoil: float = 460.0
@@ -149,3 +150,15 @@ func add_ammo(amount: int) -> void:
 	
 	if ammo >= max_ammo / 2.0:
 		_mercy_dropped = false
+
+func capture() -> void:
+	captured.emit()
+	
+	can_fire = false
+	velocity = Vector2.ZERO
+	
+	set_physics_process(false)
+	set_process(false)
+	
+	await get_tree().create_timer(1.5).timeout
+	get_tree().reload_current_scene()

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b1fi7rn5t6un0"]
+
+[ext_resource type="Texture2D" uid="uid://da20820hxuo4n" path="res://assets/enemies/worker/worker.png" id="1_l00td"]
+[ext_resource type="Script" uid="uid://bhsljr86qcllf" path="res://enemies/worker.gd" id="1_s2ki7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l00td"]
+radius = 32.0
+height = 128.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2ki7"]
+radius = 48.0
+height = 128.0
+
+[node name="Worker" type="CharacterBody2D" unique_id=1552534330]
+collision_layer = 4
+script = ExtResource("1_s2ki7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1812181544]
+texture = ExtResource("1_l00td")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=230701115]
+shape = SubResource("CapsuleShape2D_l00td")
+
+[node name="TouchArea" type="Area2D" parent="." unique_id=355033974]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchArea" unique_id=1980208903]
+shape = SubResource("CapsuleShape2D_s2ki7")

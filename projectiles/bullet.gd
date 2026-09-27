@@ -28,10 +28,20 @@ func _physics_process(delta: float) -> void:
 	
 	var col := move_and_collide(_velocity * delta)
 	if col:
+		var collider := col.get_collider()
+		
+		if collider and collider.is_in_group("enemies"):
+			if collider.has_method("take_damage"):
+				collider.take_damage(10)
+			
+			_die()
+			
+			return
+		
 		var normal := col.get_normal()
 		var incoming := _velocity.normalized()
-		
 		var headon := absf(incoming.dot(normal))
+		
 		if _bounces < max_bounces and headon < ricochet_cutoff:
 			_velocity = _velocity.bounce(normal) * bounce_energy
 			rotation = _velocity.angle()

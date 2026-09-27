@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dkthynf6av2jm" path="res://player/player.tscn" id="1_ubfh8"]
 [ext_resource type="PackedScene" uid="uid://dvk0xdquhpek3" path="res://hud/hud.tscn" id="2_444vf"]
+[ext_resource type="PackedScene" uid="uid://bkjjey8gq6h8f" path="res://spawner/spawner.tscn" id="3_27ga2"]
+[ext_resource type="PackedScene" uid="uid://b1fi7rn5t6un0" path="res://enemies/worker.tscn" id="4_h0wof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rti0"]
 size = Vector2(1152, 40)
@@ -62,3 +64,7 @@ color = Color(0.40069774, 0.40069774, 0.40069768, 1)
 position = Vector2(576, 324)
 
 [node name="HUD" parent="." unique_id=1846595023 instance=ExtResource("2_444vf")]
+
+[node name="Spawner" parent="." unique_id=1238383317 instance=ExtResource("3_27ga2")]
+position = Vector2(1024, 324)
+worker_scene = ExtResource("4_h0wof")
